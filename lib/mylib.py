@@ -50,40 +50,19 @@ def juros_compostos(amount:float, goal:float|list[float], bank:float=0) -> int:
         else:
             return 1 + juros_compostos(amount,goal,bank=bank)
 
-def month_to_time(time_month:int) -> int|int:
+def month_to_time(time_month:int) -> tuple[int]:
     time_year = time_month//12
     time_month = time_month - time_year*12
-    return time_year, time_month
+    return (time_year, time_month)
 
-def print_date(time_year, time_month):
-    month_str = 'mês' if time_month == 1 else 'meses'
-    year_str = 'ano' if time_year == 1 else 'anos'
+def print_date(time_year:int, time_month:int) -> None:
+    month_str = 'mês' if time_month**2 == 1 else 'meses'
+    year_str = 'ano' if time_year**2 == 1 else 'anos'
     
     if time_year != 0:
         print(f'{time_year}',f'{year_str}')
     if time_month != 0:
         print(f'{time_month}',f'{month_str}')
-
-months = juros_compostos(250.00,100000)
-year,months = month_to_time(months)
-print_date(months,year)
-print_date(4,0)
-
-
-
-
-btc_VALUES_2024 = ( 221787.06,
-                    213144.52,
-                    314880.80,
-                    343092.00,
-                    299365.18,
-                    357068.67,
-                    354521.00,
-                    369989.88,
-                    327315.34,
-                    337335.00,
-                    409895.99,
-                    587000.00)
 
 
 
